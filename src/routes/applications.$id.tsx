@@ -111,7 +111,7 @@ function ApplicationDetail() {
               </TabsContent>
 
               <TabsContent value="business" className="mt-3"><Panel title="Business information"><div className="text-[13px] text-muted-foreground">Detailed business profile, entity structure, tax IDs and location details.</div></Panel></TabsContent>
-              <TabsContent value="owners" className="mt-3"><Panel title="Owners"><div className="text-[13px] text-muted-foreground">Ownership > 10%, officers, and identity verifications.</div></Panel></TabsContent>
+              <TabsContent value="owners" className="mt-3"><Panel title="Owners"><div className="text-[13px] text-muted-foreground">Ownership over 10%, officers, and identity verifications.</div></Panel></TabsContent>
               <TabsContent value="documents" className="mt-3"><Panel title="Documents"><div className="text-[13px] text-muted-foreground">Uploaded evidence, retention schedules, encryption and virus-scan status.</div></Panel></TabsContent>
               <TabsContent value="payments" className="mt-3"><Panel title="Payments"><div className="text-[13px] text-muted-foreground">MerchantOne transactions, refunds, chargebacks and reconciliation.</div></Panel></TabsContent>
               <TabsContent value="timeline" className="mt-3"><Panel title="Timeline"><div className="text-[13px] text-muted-foreground">Full lifecycle timeline of the application.</div></Panel></TabsContent>
