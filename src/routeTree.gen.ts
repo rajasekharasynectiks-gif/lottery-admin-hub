@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
 import { Route as SystemRouteImport } from './routes/system'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SecurityRouteImport } from './routes/security'
 import { Route as RolesRouteImport } from './routes/roles'
 import { Route as ReportsRouteImport } from './routes/reports'
@@ -41,6 +42,11 @@ const SystemRoute = SystemRouteImport.update({
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SecurityRoute = SecurityRouteImport.update({
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/reports': typeof ReportsRoute
   '/roles': typeof RolesRoute
   '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/support': typeof SupportRoute
   '/system': typeof SystemRoute
   '/users': typeof UsersRoute
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/reports': typeof ReportsRoute
   '/roles': typeof RolesRoute
   '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/support': typeof SupportRoute
   '/system': typeof SystemRoute
   '/users': typeof UsersRoute
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/reports': typeof ReportsRoute
   '/roles': typeof RolesRoute
   '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/support': typeof SupportRoute
   '/system': typeof SystemRoute
   '/users': typeof UsersRoute
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/reports'
     | '/roles'
     | '/security'
+    | '/settings'
     | '/support'
     | '/system'
     | '/users'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/reports'
     | '/roles'
     | '/security'
+    | '/settings'
     | '/support'
     | '/system'
     | '/users'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/reports'
     | '/roles'
     | '/security'
+    | '/settings'
     | '/support'
     | '/system'
     | '/users'
@@ -258,6 +270,7 @@ export interface RootRouteChildren {
   ReportsRoute: typeof ReportsRoute
   RolesRoute: typeof RolesRoute
   SecurityRoute: typeof SecurityRoute
+  SettingsRoute: typeof SettingsRoute
   SupportRoute: typeof SupportRoute
   SystemRoute: typeof SystemRoute
   UsersRoute: typeof UsersRoute
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/security': {
@@ -421,6 +441,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReportsRoute: ReportsRoute,
   RolesRoute: RolesRoute,
   SecurityRoute: SecurityRoute,
+  SettingsRoute: SettingsRoute,
   SupportRoute: SupportRoute,
   SystemRoute: SystemRoute,
   UsersRoute: UsersRoute,
