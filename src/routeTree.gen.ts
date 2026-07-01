@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as RolesRouteImport } from './routes/roles'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as NotificationsRouteImport } from './routes/notifications'
@@ -25,6 +26,11 @@ import { Route as ApplicationsIdRouteImport } from './routes/applications.$id'
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolesRoute = RolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
+  '/roles': typeof RolesRoute
   '/users': typeof UsersRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
+  '/roles': typeof RolesRoute
   '/users': typeof UsersRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
+  '/roles': typeof RolesRoute
   '/users': typeof UsersRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/payments'
     | '/reports'
+    | '/roles'
     | '/users'
     | '/applications/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/payments'
     | '/reports'
+    | '/roles'
     | '/users'
     | '/applications/$id'
   id:
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/payments'
     | '/reports'
+    | '/roles'
     | '/users'
     | '/applications/$id'
   fileRoutesById: FileRoutesById
@@ -182,6 +194,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   PaymentsRoute: typeof PaymentsRoute
   ReportsRoute: typeof ReportsRoute
+  RolesRoute: typeof RolesRoute
   UsersRoute: typeof UsersRoute
 }
 
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roles': {
+      id: '/roles'
+      path: '/roles'
+      fullPath: '/roles'
+      preLoaderRoute: typeof RolesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -297,6 +317,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   PaymentsRoute: PaymentsRoute,
   ReportsRoute: ReportsRoute,
+  RolesRoute: RolesRoute,
   UsersRoute: UsersRoute,
 }
 export const routeTree = rootRouteImport
