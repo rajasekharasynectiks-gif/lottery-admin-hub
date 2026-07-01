@@ -15,6 +15,7 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CmsRouteImport } from './routes/cms'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as ApplicantsRouteImport } from './routes/applicants'
 import { Route as IndexRouteImport } from './routes/index'
@@ -50,6 +51,11 @@ const CmsRoute = CmsRouteImport.update({
   path: '/cms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplicationsRoute = ApplicationsRouteImport.update({
   id: '/applications',
   path: '/applications',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
+  '/audit': typeof AuditRoute
   '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
+  '/audit': typeof AuditRoute
   '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
+  '/audit': typeof AuditRoute
   '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/'
     | '/applicants'
     | '/applications'
+    | '/audit'
     | '/cms'
     | '/dashboard'
     | '/documents'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/applicants'
     | '/applications'
+    | '/audit'
     | '/cms'
     | '/dashboard'
     | '/documents'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/'
     | '/applicants'
     | '/applications'
+    | '/audit'
     | '/cms'
     | '/dashboard'
     | '/documents'
@@ -151,6 +163,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApplicantsRoute: typeof ApplicantsRoute
   ApplicationsRoute: typeof ApplicationsRouteWithChildren
+  AuditRoute: typeof AuditRoute
   CmsRoute: typeof CmsRoute
   DashboardRoute: typeof DashboardRoute
   DocumentsRoute: typeof DocumentsRoute
@@ -203,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CmsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/applications': {
       id: '/applications'
       path: '/applications'
@@ -250,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApplicantsRoute: ApplicantsRoute,
   ApplicationsRoute: ApplicationsRouteWithChildren,
+  AuditRoute: AuditRoute,
   CmsRoute: CmsRoute,
   DashboardRoute: DashboardRoute,
   DocumentsRoute: DocumentsRoute,
