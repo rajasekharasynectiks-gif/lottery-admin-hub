@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as ApplicantsRouteImport } from './routes/applicants'
@@ -19,6 +20,11 @@ import { Route as ApplicationsIdRouteImport } from './routes/applications.$id'
 const PaymentsRoute = PaymentsRouteImport.update({
   id: '/payments',
   path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/payments': typeof PaymentsRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/payments': typeof PaymentsRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/payments': typeof PaymentsRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/applicants'
     | '/applications'
     | '/dashboard'
+    | '/documents'
     | '/payments'
     | '/applications/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/applicants'
     | '/applications'
     | '/dashboard'
+    | '/documents'
     | '/payments'
     | '/applications/$id'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/applicants'
     | '/applications'
     | '/dashboard'
+    | '/documents'
     | '/payments'
     | '/applications/$id'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   ApplicantsRoute: typeof ApplicantsRoute
   ApplicationsRoute: typeof ApplicationsRouteWithChildren
   DashboardRoute: typeof DashboardRoute
+  DocumentsRoute: typeof DocumentsRoute
   PaymentsRoute: typeof PaymentsRoute
 }
 
@@ -114,6 +127,13 @@ declare module '@tanstack/react-router' {
       path: '/payments'
       fullPath: '/payments'
       preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -171,6 +191,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApplicantsRoute: ApplicantsRoute,
   ApplicationsRoute: ApplicationsRouteWithChildren,
   DashboardRoute: DashboardRoute,
+  DocumentsRoute: DocumentsRoute,
   PaymentsRoute: PaymentsRoute,
 }
 export const routeTree = rootRouteImport
