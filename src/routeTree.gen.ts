@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as SystemRouteImport } from './routes/system'
 import { Route as RolesRouteImport } from './routes/roles'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as PaymentsRouteImport } from './routes/payments'
@@ -26,6 +27,11 @@ import { Route as ApplicationsIdRouteImport } from './routes/applications.$id'
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemRoute = SystemRouteImport.update({
+  id: '/system',
+  path: '/system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RolesRoute = RolesRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
   '/roles': typeof RolesRoute
+  '/system': typeof SystemRoute
   '/users': typeof UsersRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
   '/roles': typeof RolesRoute
+  '/system': typeof SystemRoute
   '/users': typeof UsersRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
   '/roles': typeof RolesRoute
+  '/system': typeof SystemRoute
   '/users': typeof UsersRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/reports'
     | '/roles'
+    | '/system'
     | '/users'
     | '/applications/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/reports'
     | '/roles'
+    | '/system'
     | '/users'
     | '/applications/$id'
   id:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/payments'
     | '/reports'
     | '/roles'
+    | '/system'
     | '/users'
     | '/applications/$id'
   fileRoutesById: FileRoutesById
@@ -195,6 +207,7 @@ export interface RootRouteChildren {
   PaymentsRoute: typeof PaymentsRoute
   ReportsRoute: typeof ReportsRoute
   RolesRoute: typeof RolesRoute
+  SystemRoute: typeof SystemRoute
   UsersRoute: typeof UsersRoute
 }
 
@@ -205,6 +218,13 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/system': {
+      id: '/system'
+      path: '/system'
+      fullPath: '/system'
+      preLoaderRoute: typeof SystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roles': {
@@ -318,6 +338,7 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentsRoute: PaymentsRoute,
   ReportsRoute: ReportsRoute,
   RolesRoute: RolesRoute,
+  SystemRoute: SystemRoute,
   UsersRoute: UsersRoute,
 }
 export const routeTree = rootRouteImport
