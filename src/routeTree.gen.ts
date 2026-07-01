@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CmsRouteImport } from './routes/cms'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as ApplicantsRouteImport } from './routes/applicants'
 import { Route as IndexRouteImport } from './routes/index'
@@ -30,6 +31,11 @@ const DocumentsRoute = DocumentsRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CmsRoute = CmsRouteImport.update({
+  id: '/cms',
+  path: '/cms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplicationsRoute = ApplicationsRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
+  '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
   '/payments': typeof PaymentsRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
+  '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
   '/payments': typeof PaymentsRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
+  '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
   '/payments': typeof PaymentsRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/applicants'
     | '/applications'
+    | '/cms'
     | '/dashboard'
     | '/documents'
     | '/payments'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/applicants'
     | '/applications'
+    | '/cms'
     | '/dashboard'
     | '/documents'
     | '/payments'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/applicants'
     | '/applications'
+    | '/cms'
     | '/dashboard'
     | '/documents'
     | '/payments'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApplicantsRoute: typeof ApplicantsRoute
   ApplicationsRoute: typeof ApplicationsRouteWithChildren
+  CmsRoute: typeof CmsRoute
   DashboardRoute: typeof DashboardRoute
   DocumentsRoute: typeof DocumentsRoute
   PaymentsRoute: typeof PaymentsRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cms': {
+      id: '/cms'
+      path: '/cms'
+      fullPath: '/cms'
+      preLoaderRoute: typeof CmsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/applications': {
@@ -190,6 +210,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApplicantsRoute: ApplicantsRoute,
   ApplicationsRoute: ApplicationsRouteWithChildren,
+  CmsRoute: CmsRoute,
   DashboardRoute: DashboardRoute,
   DocumentsRoute: DocumentsRoute,
   PaymentsRoute: PaymentsRoute,

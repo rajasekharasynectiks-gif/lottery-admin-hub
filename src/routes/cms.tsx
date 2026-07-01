@@ -24,7 +24,7 @@ function CMS() {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard label="Published pages" value={cmsPages.filter((p) => p.status === "Published").length} tone="up" />
           <StatCard label="Drafts" value={cmsPages.filter((p) => p.status === "Draft").length} tone="warning" />
-          <StatCard label="Scheduled" value={2} tone="info" />
+          <StatCard label="Scheduled" value={2} tone="neutral" />
           <StatCard label="Approvals pending" value={1} tone="warning" />
         </div>
 
