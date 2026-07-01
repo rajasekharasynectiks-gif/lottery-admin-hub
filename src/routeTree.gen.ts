@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ApplicationsRouteImport } from './routes/applications'
 import { Route as ApplicantsRouteImport } from './routes/applicants'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApplicationsIdRouteImport } from './routes/applications.$id'
 
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/payments': typeof PaymentsRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/payments': typeof PaymentsRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/applicants': typeof ApplicantsRoute
   '/applications': typeof ApplicationsRouteWithChildren
   '/dashboard': typeof DashboardRoute
+  '/payments': typeof PaymentsRoute
   '/applications/$id': typeof ApplicationsIdRoute
 }
 export interface FileRouteTypes {
@@ -70,15 +79,23 @@ export interface FileRouteTypes {
     | '/applicants'
     | '/applications'
     | '/dashboard'
+    | '/payments'
     | '/applications/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/applicants' | '/applications' | '/dashboard' | '/applications/$id'
+  to:
+    | '/'
+    | '/applicants'
+    | '/applications'
+    | '/dashboard'
+    | '/payments'
+    | '/applications/$id'
   id:
     | '__root__'
     | '/'
     | '/applicants'
     | '/applications'
     | '/dashboard'
+    | '/payments'
     | '/applications/$id'
   fileRoutesById: FileRoutesById
 }
@@ -87,10 +104,18 @@ export interface RootRouteChildren {
   ApplicantsRoute: typeof ApplicantsRoute
   ApplicationsRoute: typeof ApplicationsRouteWithChildren
   DashboardRoute: typeof DashboardRoute
+  PaymentsRoute: typeof PaymentsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -146,6 +171,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApplicantsRoute: ApplicantsRoute,
   ApplicationsRoute: ApplicationsRouteWithChildren,
   DashboardRoute: DashboardRoute,
+  PaymentsRoute: PaymentsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
