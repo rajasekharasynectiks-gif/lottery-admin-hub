@@ -15,6 +15,7 @@ import { Route as RolesRouteImport } from './routes/roles'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as IntegrationsRouteImport } from './routes/integrations'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CmsRouteImport } from './routes/cms'
@@ -52,6 +53,11 @@ const PaymentsRoute = PaymentsRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsRoute = IntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocumentsRoute = DocumentsRouteImport.update({
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
+  '/integrations': typeof IntegrationsRoute
   '/notifications': typeof NotificationsRoute
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
+  '/integrations': typeof IntegrationsRoute
   '/notifications': typeof NotificationsRoute
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/cms': typeof CmsRoute
   '/dashboard': typeof DashboardRoute
   '/documents': typeof DocumentsRoute
+  '/integrations': typeof IntegrationsRoute
   '/notifications': typeof NotificationsRoute
   '/payments': typeof PaymentsRoute
   '/reports': typeof ReportsRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/cms'
     | '/dashboard'
     | '/documents'
+    | '/integrations'
     | '/notifications'
     | '/payments'
     | '/reports'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/cms'
     | '/dashboard'
     | '/documents'
+    | '/integrations'
     | '/notifications'
     | '/payments'
     | '/reports'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/cms'
     | '/dashboard'
     | '/documents'
+    | '/integrations'
     | '/notifications'
     | '/payments'
     | '/reports'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   CmsRoute: typeof CmsRoute
   DashboardRoute: typeof DashboardRoute
   DocumentsRoute: typeof DocumentsRoute
+  IntegrationsRoute: typeof IntegrationsRoute
   NotificationsRoute: typeof NotificationsRoute
   PaymentsRoute: typeof PaymentsRoute
   ReportsRoute: typeof ReportsRoute
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations': {
+      id: '/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof IntegrationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/documents': {
@@ -334,6 +354,7 @@ const rootRouteChildren: RootRouteChildren = {
   CmsRoute: CmsRoute,
   DashboardRoute: DashboardRoute,
   DocumentsRoute: DocumentsRoute,
+  IntegrationsRoute: IntegrationsRoute,
   NotificationsRoute: NotificationsRoute,
   PaymentsRoute: PaymentsRoute,
   ReportsRoute: ReportsRoute,
