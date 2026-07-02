@@ -4,17 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lottery Admin Hub</title>
-    <link rel="icon" href="/lottery-admin-hub/favicon.svg" />
+
+    <link rel="icon" href="./favicon.svg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <script type="module" crossorigin src="/lottery-admin-hub/assets/index-uTaUU7N3.js"></script>
     <link rel="stylesheet" crossorigin href="/lottery-admin-hub/assets/styles--EM6SHc4.css">
   </head>
+
   <body>
     <script>
-      (function(){try{var k='glc-theme';var s=localStorage.getItem(k);var t=(s==='light'||s==='dark')?s:'light';var r=document.documentElement;r.classList.toggle('light',t==='light');r.classList.toggle('dark',t==='dark');}catch(e){}})();
+      (function () {
+        try {
+          var k = "glc-theme";
+          var s = localStorage.getItem(k);
+          var t = s === "light" || s === "dark" ? s : "light";
+          var r = document.documentElement;
+          r.classList.toggle("light", t === "light");
+          r.classList.toggle("dark", t === "dark");
+        } catch (e) {}
+      })();
     </script>
-    <div id="root"></div>
+
+    <div id="root"></div>
+
   </body>
 </html>
