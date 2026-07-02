@@ -1,21 +1,25 @@
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
-import viteReact from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
-const srcPath = fileURLToPath(new URL("./src", import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+  base: "/lottery-admin-hub/",
+
   server: {
-    host: "::",
+    host: true,
     port: 8080,
   },
 
   resolve: {
     alias: {
-      "@": srcPath,
+      "@": path.resolve(__dirname, "./src"),
     },
     dedupe: [
       "react",
@@ -29,23 +33,17 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    include: [
-      "react",
-      "react-dom",
-      "react-dom/client",
-      "react/jsx-runtime",
-      "react/jsx-dev-runtime",
-    ],
-    ignoreOutdatedRequests: true,
+    include: ["react", "react-dom", "react-dom/client"],
   },
 
   plugins: [
     tailwindcss(),
-
-    tsConfigPaths({
-      projects: ["./tsconfig.json"],
-    }),
-
-    viteReact(),
+    tsConfigPaths(),
+    react(),
   ],
+
+  build: {
+    outDir: "dist",
+    emptyOutDir: true,
+  },
 });

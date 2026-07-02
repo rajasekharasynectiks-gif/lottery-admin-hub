@@ -23,6 +23,8 @@ export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
 });
 
+export { Dashboard };
+
 const chartColors = ["var(--color-chart-1)", "var(--color-chart-2)", "var(--color-chart-3)", "var(--color-chart-4)", "var(--color-chart-5)"];
 
 function Dashboard() {
