@@ -16,7 +16,7 @@ import {
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "Executive Dashboard — GLC Admin" },
+      { title: "Executive Dashboard - GLC Admin" },
       { name: "description", content: "Real-time KPIs, application volume, revenue and operational health for GLC leadership." },
     ],
   }),

@@ -4,7 +4,7 @@ import { ShieldAlert, ShieldCheck, Lock, KeyRound, AlertTriangle } from "lucide-
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, CartesianGrid } from "recharts";
 
 export const Route = createFileRoute("/security")({
-  head: () => ({ meta: [{ title: "Security — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Security - GLC Admin" }] }),
   component: Security,
 });
 

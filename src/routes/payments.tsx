@@ -7,7 +7,7 @@ import { applications, currency } from "@/lib/glc-data";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 export const Route = createFileRoute("/payments")({
-  head: () => ({ meta: [{ title: "Payments — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Payments - GLC Admin" }] }),
   component: Payments,
 });
 

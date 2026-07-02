@@ -127,8 +127,8 @@ export const recentActivity = [
 export const tasks = [
   { title: "Review 24 applications flagged for identity mismatch", due: "Today", owner: "Compliance", priority: "High" as const },
   { title: "Reconcile Merchant One settlement batch #2681", due: "Today", owner: "Finance", priority: "High" as const },
-  { title: "Approve CMS update — Homepage banner", due: "Tomorrow", owner: "Content", priority: "Normal" as const },
-  { title: "Quarterly access review — Licensing team", due: "Fri", owner: "SysAdmin", priority: "Normal" as const },
+  { title: "Approve CMS update - Homepage banner", due: "Tomorrow", owner: "Content", priority: "Normal" as const },
+  { title: "Quarterly access review - Licensing team", due: "Fri", owner: "SysAdmin", priority: "Normal" as const },
   { title: "Renew ActivePDF service certificate", due: "Jul 14", owner: "Ops", priority: "Urgent" as const },
 ];
 

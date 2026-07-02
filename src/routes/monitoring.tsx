@@ -3,7 +3,7 @@ import { PageHeader, Panel, Section, StatCard, StatusPill } from "@/components/g
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 export const Route = createFileRoute("/monitoring")({
-  head: () => ({ meta: [{ title: "System Monitoring — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "System Monitoring - GLC Admin" }] }),
   component: Monitoring,
 });
 

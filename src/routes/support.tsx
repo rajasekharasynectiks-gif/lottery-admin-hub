@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { supportTickets } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/support")({
-  head: () => ({ meta: [{ title: "Support Tickets — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Support Tickets - GLC Admin" }] }),
   component: Support,
 });
 

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { notificationTemplates } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/notifications")({
-  head: () => ({ meta: [{ title: "Notifications — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Notifications - GLC Admin" }] }),
   component: Notifications,
 });
 

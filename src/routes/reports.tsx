@@ -6,7 +6,7 @@ import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YA
 import { applicationsTrend, revenueTrend, currency } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/reports")({
-  head: () => ({ meta: [{ title: "Reports & BI — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Reports & BI - GLC Admin" }] }),
   component: Reports,
 });
 

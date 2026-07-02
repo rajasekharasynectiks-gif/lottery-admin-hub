@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { roles } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/roles")({
-  head: () => ({ meta: [{ title: "Roles & Permissions — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Roles & Permissions - GLC Admin" }] }),
   component: Roles,
 });
 

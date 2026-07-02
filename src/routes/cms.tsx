@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cmsPages } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/cms")({
-  head: () => ({ meta: [{ title: "Content Management — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Content Management - GLC Admin" }] }),
   component: CMS,
 });
 
@@ -55,8 +55,8 @@ function CMS() {
             <Panel title="Announcements">
               <ul className="space-y-2 text-[12.5px]">
                 <li className="rounded border border-border p-2">
-                  <div className="flex items-center justify-between"><span className="font-medium">System maintenance — Jul 12</span><StatusPill tone="info">Scheduled</StatusPill></div>
-                  <p className="mt-1 text-muted-foreground">Portal will be unavailable 02:00–04:00 ET for planned upgrades.</p>
+                  <div className="flex items-center justify-between"><span className="font-medium">System maintenance - Jul 12</span><StatusPill tone="info">Scheduled</StatusPill></div>
+                  <p className="mt-1 text-muted-foreground">Portal will be unavailable 02:00-04:00 ET for planned upgrades.</p>
                 </li>
                 <li className="rounded border border-border p-2">
                   <div className="flex items-center justify-between"><span className="font-medium">New retailer onboarding webinar</span><StatusPill tone="success">Live</StatusPill></div>

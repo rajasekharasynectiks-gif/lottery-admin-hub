@@ -11,7 +11,7 @@ import { applications } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/applications/$id")({
   head: ({ params }) => ({
-    meta: [{ title: `Application ${params.id} — GLC Admin` }],
+    meta: [{ title: `Application ${params.id} - GLC Admin` }],
   }),
   component: ApplicationDetail,
 });

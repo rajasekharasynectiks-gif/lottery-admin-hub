@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { auditEvents } from "@/lib/glc-data";
 
 export const Route = createFileRoute("/audit")({
-  head: () => ({ meta: [{ title: "Audit Logs — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Audit Logs - GLC Admin" }] }),
   component: Audit,
 });
 

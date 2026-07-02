@@ -5,7 +5,7 @@ import { integrations } from "@/lib/glc-data";
 import { Activity, RefreshCw } from "lucide-react";
 
 export const Route = createFileRoute("/integrations")({
-  head: () => ({ meta: [{ title: "Integrations — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "Integrations - GLC Admin" }] }),
   component: Integrations,
 });
 

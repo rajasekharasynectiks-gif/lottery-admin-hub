@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
 export const Route = createFileRoute("/system")({
-  head: () => ({ meta: [{ title: "System Administration — GLC Admin" }] }),
+  head: () => ({ meta: [{ title: "System Administration - GLC Admin" }] }),
   component: SysAdmin,
 });
 

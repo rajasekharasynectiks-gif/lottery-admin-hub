@@ -9,7 +9,7 @@ import { applications, num } from "@/lib/glc-data";
 export const Route = createFileRoute("/applications")({
   head: () => ({
     meta: [
-      { title: "Applications — GLC Admin" },
+      { title: "Applications - GLC Admin" },
       { name: "description", content: "Retailer license case management. Search, filter, assign and process applications." },
     ],
   }),
@@ -96,7 +96,7 @@ function Applications() {
               </div>
               <Button variant="outline" size="sm"><Filter className="mr-1.5 h-3.5 w-3.5" /> Advanced</Button>
               <div className="ml-auto flex items-center gap-1 text-[12px] text-muted-foreground">
-                <span className="tabular">1–20 of 12,847</span>
+                <span className="tabular">1-20 of 12,847</span>
                 <Button variant="ghost" size="sm">Prev</Button>
                 <Button variant="ghost" size="sm">Next</Button>
               </div>
